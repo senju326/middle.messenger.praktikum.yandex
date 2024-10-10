@@ -1,15 +1,15 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
-import { resolve } from 'path'
+import handlebars from './vite-plugin.ts';
 
 export default defineConfig({
+    root: resolve(__dirname, 'src'),
     build: {
-        rollupOptions: {
-            input:{
-                main:resolve(__dirname, 'index.html'),
-            },
-        },
+        outDir:resolve(__dirname, 'index.html'),
     },
-    css:{
-        scss: './scss.config.js'
-    }
+    plugins: [handlebars({
+        partialDirectory: resolve(__dirname, './src/components'),
+    })],
 });
+
+

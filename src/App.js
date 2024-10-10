@@ -1,17 +1,17 @@
 import Handlebars from 'handlebars';
-//import * as Pages from './pages';
-import loginTemplate from './pages/loginPage.hbs';
-import signinTemplate from './pages/signinPage.hbs';
+import loginTemplate from './pages/loginPage/loginPage.hbs';
+import signinTemplate from './pages/signinPage/signinPage.hbs';
 
 // Register partial
-import Input from './components/Input.js';
-import Button from './components/Button.js';
+import Input from './components/input/Input.js';
+import Button from './components/button/Button.js';
 
 Handlebars. registerPartial('Input', Input);
 Handlebars. registerPartial('Button', Button);
 
+export default class App{
 // загрузка страницы регистрации
-const loadLoginPage = () => {
+    loadLoginPage = () => {
     document.getElementById('app').innerHTML = `${loginTemplate()}`;
 
     // Обработка формы регистрации
@@ -24,7 +24,7 @@ const loadLoginPage = () => {
 };
 
 // Загрузка страницы авторизации
-const loadSigninPage = () => {
+    loadSigninPage = () => {
     document.getElementById('app').innerHTML = `${signinTemplate()}`;
 
     // Обработка формы авторизации
@@ -37,11 +37,12 @@ const loadSigninPage = () => {
 };
 
 // Определение текущей страницы
-const path = window.location.pathname;
-if (path.includes('registration.html')) {
-    loadLoginPage();
-} else if (path.includes('login.html')) {
-    loadSigninPage();
-} else {
-    loadLoginPage(); // По умолчанию
+//     path = window.location.pathname;
+// if (path.includes('registration.html')) {
+//     loadLoginPage();
+// } else if (path.includes('login.html')) {
+//     loadSigninPage();
+// } else {
+//     loadLoginPage(); // По умолчанию
+// }
 }
