@@ -81,3 +81,73 @@ README — первое, что прочитает пользователь, к�
 - «[Вебпак](https://github.com/webpack/webpack)»,
 - «[ТДенгине](https://github.com/taosdata/TDengine)»,
 - «[Соул-хантинг](https://github.com/vladpereskokov/soul-hunting/)».
+
+new line
+
+
+constructor() {
+        this.state = { //стэйт для переключения между страницами 
+            currentPage: 'createQuestionnaire',
+            questions: [],
+            answers: [],
+    };
+    this.appElement = document.getElementById('app');
+    }
+    render() {
+        let template;
+        if (this.state.currentPage === 'createQuestionnaire') {
+            template = Handlebars.compile(Pages.CreatePage);
+            this.appElement.innerHTML = template({
+                questions: this.state.questions,
+                createButtonEnabled: this.state.questions.length == 0});
+        }else{
+        template = Handlebars.compile(Pages.AnswersPage);
+        this.appElement.innerHTML = template({
+            questions: mockQuestions,
+            answers: mockAnswers,
+            answerOptions: ['Yes', 'No', 'Maybe'],
+            });
+        }
+        this.attachEventListeners(); // когда страница создана нужно подписаться на события 
+    }
+
+    attachEventListeners() {
+        if (this.state.currentPage ==='createQuestionnaire') {
+            const addButton = document.getElementById('add-question');
+            const createButton = document.getElementById('create-questionnaire');
+
+            addButton.addEventListener('click', () => this.addQuestion());
+            createButton.addEventListener('click', () => this.createQuestionnaire());
+        } else {
+            const submitButton = document.getElementById('submit-answers');
+            submitButton.addEventListener("click", () => this.submitAnswers());
+        }
+
+        const footerLinks = document.querySelectorAll('.footer-link'); //добавляем события на ссылки чтобы можно было сменить страницу
+        footerLinks.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault(); // чтобы не обрабатывать дефолтное поведение ссылок чтоб не перезагружать страницу
+                this. changePage(e.target.dataset.page); // вызывает свой код с другой страницы
+            });
+        });
+    }
+    changePage(page){ // в стэйт заосвывает текущую страницу которую мы выбрали и вызывает рендер
+        this.state.currentPage = page;
+        this.render();
+    }   
+
+    addQuestion(){ //добавить вопрос (перендеривает страницу всегда динамично)
+        const questionInput = document.getElementById('question-input');
+        if (questionInput.value.trim()){
+            this.state.questions.push(questionInput.value);
+            questionInput.value = '';
+            this.render();
+            }
+        }    
+
+        createQuestionnaire(){ // выбираем создать опросни и переходим на другую страницу
+        if (this.state.questions.length > 0) {
+            this.state.currentPage = 'answerQuestionnaire';
+            this. render();
+        }    
+    }

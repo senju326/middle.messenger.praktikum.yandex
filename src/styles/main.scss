@@ -1,0 +1,38 @@
+$backgr-color: #FFFFFF;
+$main-color: #3369F3;
+
+body {
+    background-color: $backgr-color;
+    font-family: Arial, sans-serif;
+}
+
+
+.login {
+
+    &__wrapper {
+        max-height: 340px;
+        max-width: 450px;
+        top: 135px;
+        left: 470px;
+        border-radius: 12px 0px 0px 0px;
+    }
+
+    &__title {
+        margin: 0 auto;
+        padding: 50px;
+        font-family: Inter, sans-serif;;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: center;
+
+    }
+
+    &__body {
+
+    }
+
+    &__buttons {
+    }
+}
+
