@@ -1,0 +1,33 @@
+$primary-color: #3498db;
+
+body {
+    background-color: $primary-color;
+    font-family: Arial, sans-serif;
+}
+
+
+.login {
+
+    &__wrapper {
+        max-height: 340px;
+        max-width: 450px;
+    }
+
+    &__title {
+        margin: 0 auto;
+        padding: 50px;
+        font-family: Inter;
+        font-size: 20px;
+        font-weight: 500;
+        line-height: 20px;
+        text-align: center;
+
+    }
+
+    &__body {
+    }
+
+    &__buttons {
+    }
+}
+

@@ -1,0 +1,37 @@
+<div class="signin">
+    <div class="signin__wrapper">
+        <div class="signin__title">
+        <h1>Регистрация</h1>
+        </div>
+        <form class="signinForm">
+                <div>
+                    <label for="email">Почта</label>
+                    {{>Input name='email' type='email' required}}
+                </div>
+                <div>
+                    <label for="login">Логин</label>
+                    {{>Input name='login' type='text' required}}
+                </div>
+                <div>
+                    <label for="name">Имя</label>
+                    {{>Input name='name' type='text' required}}
+                </div>
+                <div>
+                    <label for="surname">Фамилия</label>
+                    {{>Input name='surname' type='text' required}}
+                </div>
+                <div>
+                    <label for="password">Пароль</label>
+                    {{>Input name='password' type='password' required}}
+                </div>
+                <div>
+                    <label for="password-second">Пароль (ещё раз)</label>
+                    {{>Input name='password-second' type='password' required}}
+                </div>
+                <div class="signin__btn">   
+                {{>Button href='#' action='Зарегистрироваться'}}
+                </div>
+        </form> 
+    </div>
+</div>
+</div>
